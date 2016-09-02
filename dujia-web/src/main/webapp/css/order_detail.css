@@ -1,0 +1,342 @@
+.breadcrumb{
+    padding: 10px 0;
+}
+.order-xq{
+	width: 1200px;
+	margin:0 auto;
+	overflow: hidden;
+}
+.order-xq .order-xq-l{
+    width: 900px;
+    float: left;
+}
+/* 订单状态cont-l-top */
+.cont-l-top .cont-l-a{
+	margin-bottom: 6px;
+}
+.cont-l-top dl dd.cont-l-b-l{
+    float: right;
+}
+.cont-l-top .last_time{
+	margin-bottom: 5px;
+    color: #aaaaaa;
+}
+.cont-l-top .last_time .time {
+    background: url("../images/1.png") no-repeat -115px -20px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    zoom: 1;
+    position: relative;
+    top: -2px;
+    left: 0;
+    margin: 0 5px 0 0px;
+}
+.cancel{
+	line-height: 26px;
+}
+.cont-l-body{
+    margin: 20px 0;
+    padding-bottom: 20px;
+} 
+.step {
+    float: left;
+    padding-left: 100px;
+    height: 70px;
+    width: 757px;
+}
+.item {
+    position: relative;
+    float: left;
+    text-align: center;
+}
+.item2{
+    width: 205px;
+}
+.item .img_icon {
+    background: url(../images/icon.png);
+    width: 24px;
+    height: 24px;
+    float: left;
+    margin: 4px 0 4px 0px;
+}
+.item .img_icon1{
+    background: url(../images/icon1.png);
+}
+.text {
+    width: 96px;
+    position: absolute;
+    top: 35px;
+    text-align: center;
+    left: -35px;
+    line-height: 18px;
+    z-index: 999;
+    color: #5e5e5e;
+}
+.text .cont_t {
+    font-family: Arial;
+}
+.line {
+    width: 160px;
+    height: 6px;
+    background: #eeeeee;
+    margin-right: 0;
+    border-right: none;
+}
+.line .progress {
+    float: left;
+    background: #97d87c;
+    width: 80px;
+    height: 6px;
+    display: inline-block;
+    position: relative;
+}
+.line .progress:after{
+    content: "";
+    display: block;
+    position: absolute;
+    right: -5px;
+    border:3px solid #eee;
+    border-left-color: #97d87c;
+}
+.line1 {
+    background: #97d87c;
+    width: 160px;
+    height: 6px;
+    display: block;
+}
+
+/* 订单随时看 */
+.order_info .font-bold{
+    font: 400 12px/2 Microsoft YaHei;
+    font-weight: bold !important;
+}
+.order_info .order_block{
+    border-bottom: 1px solid #e5e5e5;
+}
+.order_info .online{
+    line-height: 24px;
+}
+.order_info .bd_bottom{
+    padding: 10px 20px;
+}
+.order_info .online strong{
+    color: #888;
+}
+.order_info .online em{
+    color: #666;
+}
+.order_info .online .total{
+    color: #ff8000;
+}
+.pd_consult .pd_telImg {
+    float: left;
+    margin: 15px 10px 10px 20px;
+}
+.pd_consult .pd_new {
+    float: left;
+}
+.pd_consult .pd_tel {
+    background: #fff;
+    width: 100px;
+    font: 600 14px/20px Arial,"Microsoft YaHei";
+    margin: 20px 0 10px 10px;
+    color: #333;
+}
+.pd_consult .consult {
+    font: 400 12px/2 Arial,"Microsoft YaHei";
+    margin: 0 0 15px 10px;
+    color: #888;
+}
+
+.pd0{
+    padding:0 20px;
+}
+
+/* 订单信息 */
+.orderinfo_detail{
+    font: 14px Arial,"Microsoft YaHei";
+}
+.cont-l-body h3{
+    line-height: 54px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.orderinfo_detail .order_base{
+    padding-left: 20px;
+}
+.orderinfo_detail .order_base dd{
+    line-height: 32px;
+    float: left;
+    width: 100%;
+}
+.orderinfo_detail .order_base dd .base_name{
+    float: left;
+    color: #aaa;
+}
+.orderinfo_detail .order_base dd .base_content{
+    width: 590px;
+    float: left;
+    color: #666;
+}
+.orderinfo_detail .order_base dd.order_room{
+    border-top: 1px solid #eee;
+    margin-top: 14px;
+}
+.orderinfo_detail .order_base dd.order_room table{
+    width: 100%;
+    border-bottom: 1px solid #eee;
+}
+.orderinfo_detail .order_base dd.order_room table:hover{
+    background: #f6f6f6;
+}
+.orderinfo_detail .order_room table th,
+.orderinfo_detail .order_room table td{
+    text-align: center;
+    line-height: 24px;
+}
+.orderinfo_detail .order_room table th{
+    color: #aaa;
+    padding: 8px 0;
+}
+.orderinfo_detail .order_room table th i{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/common_bg.png);
+    background-repeat: no-repeat;
+}
+.orderinfo_detail .order_room table th i.sleep{
+    background-position: 0 -123px;
+}
+.orderinfo_detail .order_room table th i.play{
+    background-position: 0 -145px;
+}
+.orderinfo_detail .order_room table td{
+    color: #555;
+    padding: 16px 0;
+}
+
+/* 出游人信息 */
+.party_info {}
+.party_info dt{
+    line-height: 56px;
+    font-weight: bold;
+    color: #333;
+}
+.party_info dt span{
+    font-weight: normal;
+    color: #666;
+}
+.party_info dd{
+    line-height: 32px;
+}
+.party_info dd table,
+.drawback table{
+    width: 100%;
+    text-align: center;
+    border:1px solid #eee;
+    border-bottom: 0 none;
+
+}
+
+.party_info dd table tr,
+.drawback table tr{
+    border-bottom: 1px solid #eee;
+    height: 33px;
+}
+.party_info dd table th,
+.party_info dd table td,
+.drawback table th,
+.drawback table td{
+    padding:0 10px;
+    color: #666;
+}
+.party_info dd table th,
+.drawback table th{
+    background-color: #f6f6f6;
+    color: #888;
+}
+.party_info dd .keys{
+    color: #aaa;
+    display: inline-block;
+    width: 94px;
+    text-align: right;
+}
+.party_info dd .valus{
+    color: #666;
+}   
+.contacts_info{
+    padding-bottom: 35px;
+}
+
+/* 退款信息 */
+.drawback{
+    padding:0 20px;    
+    font:14px Arial,"Microsoft YaHei";
+    margin-bottom: 88px;
+}
+.drawback h3{
+    line-height: 44px;
+}
+
+.drawback .drawback_fee{
+    line-height: 38px;
+    color: #aaa;
+}
+.drawback .drawback_fee span{
+    color: #c00;
+}
+.drawback .drawback_fee span i{
+    color: #666;
+    font-size: 12px;
+}
+.drawback table{
+    margin: 10px 0 90px;
+}
+
+
+
+
+/* 取消订单 */
+.qx{ position:relative;}
+.pop_cancel_order{
+    position:absolute;
+    width:313px;
+    height:80px;
+    background:#fff;
+    border: solid 4px #A5A5A5\9;
+    box-shadow: 0px 0px 40px rgba(0,0,0,.19);
+    right:62px;
+    display:none;
+
+}
+.pop_cancel_order .btn_flight_close{
+    float:right;
+    width:16px;
+    height:12px;
+    margin-top:10px;
+    margin-right:10px;
+    background: url(../images/order_flight_bg.png) 0 -47px no-repeat;
+}
+.pop_cancel_order .btn_flight_close{
+    background:url(../images/order_flight_bg.png) -13px -46px no-repeat;
+}
+.pop_cancel_order  .flight_tip_box{
+    margin-top:20px;
+}
+.pop_cancel_order .tip_icon{
+    float:left;
+    width:44px;
+    height:44px;
+    margin-left:20px;
+    background:url(../images/order_flight_bg.png) 0 0 no-repeat;
+}
+.pop_cancel_order .tip_worp{
+    float:left;
+    margin-left:10px;
+    height:40px;
+    line-height:40px;
+    color:#333;
+    display:inline;
+}

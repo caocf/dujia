@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 生产方应用名称-->
+	<dubbo:application name="provider" />
+
+	<!-- 使用zookeeper注册中心服务器地址 -->
+	<dubbo:registry protocol="zookeeper" address="${zookeeper.address}" />
+
+	<!-- 支持基于Kryo和FST的Java高效序列化实现 -->
+	<dubbo:protocol name="dubbo" port="20880" />
+
+	<!-- here we demonstrate both annotation-based and xml-based configs -->
+	<dubbo:annotation package="cn.com.gome.dujia.service.impl.*" />
+
+	<!-- server默认是servlet -->
+	<!-- dubbo支持多种远程调用方式，例如
+		 dubbo RPC（二进制序列化 + tcp协议）、
+		 http invoker（二进制序列化 + http协议）、
+		 hessian（二进制序列化 + http协议）、
+		 WebServices （文本序列化 + http协议） -->
+	<!-- dubbox实现了REST风格远程调用（HTTP + JSON/XML) -->
+	<dubbo:protocol name="rest" threads="500" port="${rest_port}" contextpath="" server="servlet" accepts="500" keepalive="false"
+		 extension="cn.com.gome.dujia.extension.TraceFilter,
+                    cn.com.gome.dujia.extension.CustomExceptionMapper"/>
+
+	<!-- 用webservice协议在8080端口暴露服务 -->
+    <dubbo:protocol name="webservice" port="${webservice_port}" server="tomcat" />
+
+ 	<!-- 城市服务 -->
+	<dubbo:service interface="cn.com.gome.dujia.service.ZbyCityService" ref="zbyCityServiceImpl" protocol="dubbo,rest" validation="true"/>
+
+	<!-- 搜索服务 -->
+	<dubbo:service interface="cn.com.gome.dujia.service.SearchService" ref="searchServiceImpl" protocol="dubbo,rest" validation="true"/>
+
+	<!-- 产品线路服务 -->
+	<dubbo:service interface="cn.com.gome.dujia.service.ZbyProductService" ref="zbyProductServiceImpl" protocol="dubbo,rest" timeout="10000" validation="true"/>
+
+	<!-- 线路套餐服务 -->
+	<dubbo:service interface="cn.com.gome.dujia.service.ZbyProductPackageService" ref="zbyProductPackageServiceImpl" protocol="dubbo,rest" timeout="10000" validation="true"/>
+	
+	<!-- 线路套餐详情服务 -->
+	<dubbo:service interface="cn.com.gome.dujia.service.ZbyProductPackageDetailService" ref="zbyProductPackageDetailServiceImpl" protocol="dubbo" timeout="10000"  validation="true"/>
+	
+	<!-- 订单服务 -->
+	<dubbo:service interface="cn.com.gome.dujia.service.OrderService" ref="orderServiceImpl" protocol="dubbo" validation="true" timeout="10000" retries="0"/>
+	
+	<!-- 订单详情服务 -->
+	<dubbo:service interface="cn.com.gome.dujia.service.OrderDetailService" ref="orderDetailServiceImpl" protocol="dubbo" validation="true"/>
+	
+	<!-- 收银台服务 -->
+	<dubbo:service interface="cn.com.gome.dujia.service.CashierService" ref="cashierServiceImpl" protocol="dubbo" validation="true"/>
+	
+	<!-- 同程服务 -->
+	<dubbo:service interface="cn.com.gome.dujia.service.TcService" ref="tcServiceImpl" protocol="dubbo" validation="true" timeout="10000" retries="0"/>
+	
+	<!-- 广告服务 -->
+	<dubbo:service interface="cn.com.gome.dujia.service.AdvertService" ref="advertServiceImpl" protocol="dubbo,rest" validation="true"/>
+
+	<!-- 缓存服务 -->
+	<dubbo:service interface="cn.com.gome.dujia.service.RedisCacheService" ref="redisCacheServiceImpl" protocol="dubbo" validation="true"/>
+
+	<!-- 产品浏览量服务 -->
+	<dubbo:service interface="cn.com.gome.dujia.service.biz.ProductBizService" ref="productBizServiceImpl" protocol="rest" validation="true"/>
+
+    <!-- 退款服务服务 -->
+    <dubbo:service interface="cn.com.gome.dujia.service.OrderRefundService" ref="orderRefundServiceImpl" protocol="dubbo" validation="true"/>
+
+    <!-- 订单状态日志服务 -->
+    <dubbo:service interface="cn.com.gome.dujia.service.OrderStatusLogService" ref="orderStatusLogServiceImpl" protocol="dubbo" validation="true"/>
+    
+    <!-- sap收入回调服务 -->
+    <dubbo:service interface="cn.com.gome.dujia.service.sap.SapIncomeCallBackService" ref="sapIncomeCallBackServiceImpl" protocol="webservice" validation="true"/>
+    
+    <!-- rb回调服务 -->
+    <dubbo:service interface="cn.com.gome.dujia.service.rb.RbCallBackService" ref="rbCallBackServiceImpl" protocol="dubbo,rest" validation="true"/>
+    
+    <!-- 订单状态通知服务 -->
+    <dubbo:service interface="cn.com.gome.dujia.service.OrderCallbackService" ref="orderCallbackServiceImpl" protocol="rest" validation="true"/>
+    
+</beans>

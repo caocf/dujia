@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:reg="http://www.dangdang.com/schema/ddframe/reg"
+       xmlns:job="http://www.dangdang.com/schema/ddframe/job"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.dangdang.com/schema/ddframe/reg
+       http://www.dangdang.com/schema/ddframe/reg/reg.xsd
+       http://www.dangdang.com/schema/ddframe/job
+       http://www.dangdang.com/schema/ddframe/job/job.xsd">
+
+
+    <!--配置作业注册中心 -->
+    <bean id="dujia-job-regCenter" class="com.dangdang.ddframe.reg.zookeeper.ZookeeperRegistryCenter" init-method="init">
+        <constructor-arg>
+            <bean class="com.dangdang.ddframe.reg.zookeeper.ZookeeperConfiguration">
+                <property name="serverLists" value="${zookeeper.address}"/>
+                <property name="namespace" value="${business_name}/job"/>
+                <property name="baseSleepTimeMilliseconds" value="1000"/>
+                <property name="maxSleepTimeMilliseconds" value="3000"/>
+                <property name="maxRetries" value="3"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+    
+
+    <!-- 调度配置 -->
+    <!-- ********************** 搜索导入全量数据 每周三6点执行一次 ********************** -->
+    <job:simple id="importFullDataTask"
+              class="cn.com.gome.dujia.task.es.ImportFullDataTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 0 6 ? * WED"
+              sharding-total-count="1" misfire="false"/>
+
+    <!-- ********************** 更新索引 1小时执行一次 ********************** -->
+    <job:simple id="updateIndexTask"
+              class="cn.com.gome.dujia.task.es.UpdateIndexTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 0 */1 * * ?"
+              sharding-total-count="1" misfire="false"/>
+
+    <!-- ********************** 推送供应商下单 3分钟执行一次 ********************** -->
+    <job:simple id="pushVenderTask"
+              class="cn.com.gome.dujia.task.order.PushVenderTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 */3 * * * ?"
+              sharding-total-count="1" misfire="false"/>
+
+	<!-- ********************** 更新线路每天最低价格 每天1:00 执行一次 ********************** -->
+    <job:simple id="updateProductPriceTask"
+              class="cn.com.gome.dujia.task.es.UpdateProductPriceTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 0 1 * * ?"
+              sharding-total-count="1" misfire="false"/>              
+
+
+    <!-- ********************** 线路全量更新，每周三晚上1点执行一次 ********************** -->
+    <job:simple id="allProductUpdateTask"
+              class="cn.com.gome.dujia.task.product.AllProductUpdateTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 0 1 ? * WED"
+              sharding-total-count="1" misfire="false"/>
+
+
+    <!-- ********************** 班期价格更新，每天3点执行一次 ********************** -->
+    <job:simple id="calenderSaleUpdateTask"
+              class="cn.com.gome.dujia.task.product.CalenderSaleUpdateTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 0 3 * * ?"
+              sharding-total-count="1" misfire="false"/>
+
+
+    <!-- ********************** 线路增量更新，每5分钟执行一次 ********************** -->
+    <job:simple id="incrementProductUpdateTask"
+              class="cn.com.gome.dujia.task.product.IncrementProductUpdateTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 */5 * * * ?"
+              sharding-total-count="1" misfire="false"/>
+
+
+    <!-- ********************** 同程未确认提醒，每10分钟执行一次 ********************** -->
+    <job:simple id="orderNoNoticeStatusTask"
+              class="cn.com.gome.dujia.task.order.OrderNoNoticeStatusTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 */10 * * * ?"
+              sharding-total-count="1" misfire="false"/>
+
+    <!-- **********************  订单超时取消，每10分钟执行一次 ********************** -->
+    <job:simple id="orderTimeoutCancelTask"
+              class="cn.com.gome.dujia.task.order.OrderTimeoutCancelTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 */10 * * * ?"
+              sharding-total-count="1" misfire="false"/>
+
+    <!-- ********************** 订单完成，每10分钟执行一次 ********************** -->
+    <job:simple id="updateOrderStatusTask"
+              class="cn.com.gome.dujia.task.order.UpdateOrderStatusTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 */10 * * * ?"
+              sharding-total-count="1" misfire="false"/>
+
+    <!-- ********************** 推送rb(退款)，每10分钟执行一次 ********************** -->
+    <job:simple id="refundSendRbTask"
+              class="cn.com.gome.dujia.task.rb.RefundSendRbTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 */10 * * * ?"
+              sharding-total-count="1" misfire="false"/>
+
+
+    <!-- ********************** 推送正向SAP收款，每10分钟执行一次 ********************** -->
+    <job:simple id="pushPositiveSapPayTask"
+              class="cn.com.gome.dujia.task.sap.PushPositiveSapPayTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 */10 * * * ?"
+              sharding-total-count="1" misfire="false"/>
+
+    <!-- ********************** 推送逆向SAP收款，每10分钟执行一次 ********************** -->
+    <job:simple id="pushNegativeSapPayTask"
+              class="cn.com.gome.dujia.task.sap.PushNegativeSapPayTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 */10 * * * ?"
+              sharding-total-count="1" misfire="false"/>
+
+    <!-- ********************** 推送正向SAP收入，每10分钟执行一次 ********************** -->
+    <job:simple id="pushPositiveSapIncomeTask"
+              class="cn.com.gome.dujia.task.sap.PushPositiveSapIncomeTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 */10 * * * ?"
+              sharding-total-count="1" misfire="false"/>
+
+    <!-- ********************** 推送逆向SAP收入，每10分钟执行一次 ********************** -->
+    <job:simple id="pushNegativeSapIncomeTask"
+              class="cn.com.gome.dujia.task.sap.PushNegativeSapIncomeTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 */10 * * * ?"
+              sharding-total-count="1" misfire="false"/>
+
+    <!-- ********************** 刷新首页浮层缓存，每天0:00 执行一次 ********************** -->
+    <job:simple id="QuickLinkTask"
+              class="cn.com.gome.dujia.task.product.QuickLinkTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 0 0 * * ? *"
+              sharding-total-count="1" misfire="false"/>
+
+    <!-- ********************** 更新线路浏览量 1小时执行一次 ********************** -->
+    <job:simple id="CalculateProductHitTask"
+              class="cn.com.gome.dujia.task.product.CalculateProductHitTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 0 */1 * * ?"
+              sharding-total-count="1" misfire="false"/>
+              
+    <!-- ********************** 更新推荐广告状态  每天0:00 执行一次********************** -->
+    <job:simple id="updateADRecommendStatusTask"
+              class="cn.com.gome.dujia.task.ad.UpdateADRecommendStatusTask"
+              registry-center-ref="dujia-job-regCenter"
+              cron="0 0 0 * * ? *"
+              sharding-total-count="1" misfire="false"/>
+
+    <!-- **********************  增加sap收入记录，每10分钟执行一次 ********************** -->
+    <job:simple id="pushSapIncomeTask"
+                class="cn.com.gome.dujia.task.order.PushSapIncomeTask"
+                registry-center-ref="dujia-job-regCenter"
+                cron="0 */10 * * * ?"
+                sharding-total-count="1" misfire="false"/>
+
+</beans>

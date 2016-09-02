@@ -1,0 +1,81 @@
+.reservationover {   
+    background: #fff;
+    border: #eee solid 1px;
+    border-top: #ff8000 solid 3px;
+    padding: 20px 20px 0;
+    margin-top: 30px;
+}
+
+.reservationover button {
+    background: #ff8000;
+    padding: 10px 15px;
+    color: #fff;
+    font: 14px/14px Microsoft YaHei;
+    border: 0;
+    float: left;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.reservationover ol {
+    float: left;
+    width: 75%;
+    line-height: 50px;
+    color: #888;
+    margin: 10px;
+}
+
+.reservationover ol li h4 {
+    font: 16px/16px Microsoft YaHei;
+    color: #ff8000;
+}
+
+.reservationover ol li .order_number {
+    color: #333;
+}
+.reservationover ol li span{
+	padding-right: 60px;
+}
+.reservationover ol li span i,
+.reservationover ol li span em
+{
+	color: #ff8000;
+}
+.reservationover ol li span em{
+	font-weight: bold;
+}
+.reservationover ol li span b {
+    font-weight: bold !important;
+    color: #000 !important;
+}
+
+
+.reservationover b {
+    color: #ff8000;
+    font-weight: normal;
+    font: 14px/14px Arial;
+}
+
+.order_info{
+    padding: 20px 30px 30px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-top: 0 none;
+}
+.order_info dl{
+	line-height: 34px;
+	width:100%;
+	float: left;
+}
+.order_info dt,.order_info dd{
+	float: left;
+}
+.order_info dt{
+	width: 70px;
+	text-align: right;
+	margin-right: 5px;
+	color: #aaa;
+}
+.order_info dd{
+	color: #666;
+}

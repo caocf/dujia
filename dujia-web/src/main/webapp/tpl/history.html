@@ -1,0 +1,15 @@
+
+<%for(var i=0;i < history.length; i++){%>
+<li>
+    <a href="<%=dev%>/<%=history[i].productId%>.html" title="<%=history[i].subName%>">
+        <dl class="clearfix">
+            <dt>
+                <img src="<%=history[i].rightImageUrl%>" alt="<%=history[i].subName%>" width="240" height="130">
+            </dt>
+            <dd class="hot_tit"><%=history[i].subName%></dd>
+            <dd class="hot_price">¥<i><%=history[i].productMinPrice%></i> 起/份</dd>
+            <dd class="hot_city"><%=history[i].cityName%></dd>
+        </dl>
+    </a>
+</li>
+<%}%>

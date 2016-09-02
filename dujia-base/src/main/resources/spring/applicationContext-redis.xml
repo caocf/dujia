@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/tx
+         http://www.springframework.org/schema/tx/spring-tx.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/cache
+         http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <!-- 启用缓存注解功能，这个是必须的，否则注解不会生效，指定一个默认的Manager，否则需要在注解使用时指定Manager -->
+    <cache:annotation-driven cache-manager="cacheManager"/>
+
+    <!-- rediscached缓存管理器 -->
+    <bean id="cacheManager" class="cn.com.gome.dujia.redis.RedisCacheManager">
+        <property name="caches">
+            <set>
+                <bean class="cn.com.gome.dujia.service.impl.RedisCacheServiceImpl" p:name="EXPIRE05M" p:exp="300"/><!-- 5分钟 -->
+                <bean class="cn.com.gome.dujia.service.impl.RedisCacheServiceImpl" p:name="EXPIRE10M" p:exp="600"/><!-- 10分钟 -->
+                <bean class="cn.com.gome.dujia.service.impl.RedisCacheServiceImpl" p:name="EXPIRE30M" p:exp="1800"/><!-- 30分钟 -->
+                <bean class="cn.com.gome.dujia.service.impl.RedisCacheServiceImpl" p:name="EXPIRE01H" p:exp="3600"/><!-- 1小时 -->
+                <bean class="cn.com.gome.dujia.service.impl.RedisCacheServiceImpl" p:name="EXPIRE02H" p:exp="7200"/><!-- 2小时 -->
+                <bean class="cn.com.gome.dujia.service.impl.RedisCacheServiceImpl" p:name="EXPIRE01D" p:exp="86400"/><!-- 1天 -->
+            </set>
+        </property>
+    </bean>
+
+	<!-- redis 集群连接工厂 -->
+    <bean id="redisClusterConnectionFactory" class="cn.com.gome.ztghb.flasher.spring.RedisClusterConnectionFactory">
+        <property name="hostPort" value="${redis.address}"/>
+        <property name="business" value="${business_name}"/>
+    </bean>
+
+    <!-- redis 集群实现 -->
+    <bean id="redis" class="cn.com.gome.ztghb.flasher.impl.RedisClusterImpl">
+        <constructor-arg index="0" ref="redisClusterConnectionFactory"/>
+    </bean>
+
+    <!-- 监控拦截器 -->
+    <bean id="monitorInterceptor" class="cn.com.gome.ztghb.flasher.monitor.interceptor.MonitorInterceptor"/>
+
+    <!-- 配置拦截器代理 -->
+    <bean id="autoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <!-- 设置目标对象 -->
+        <property name="beanNames">
+            <list>
+                <value>redis</value>
+            </list>
+        </property>
+        <!-- 代理对象所使用的拦截器 -->
+        <property name="interceptorNames">
+            <list>
+                <value>monitorInterceptor</value>
+            </list>
+        </property>
+    </bean>
+</beans>

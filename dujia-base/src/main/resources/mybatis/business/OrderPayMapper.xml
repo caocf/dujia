@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.gome.dujia.mapper.business.OrderPayMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.gome.dujia.model.OrderPay" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id     column="id"       property="id"      jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="cashier_no" property="cashierNo" jdbcType="VARCHAR" />
+    <result column="trans_no" property="transNo" jdbcType="VARCHAR" />
+    <result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+    <result column="pay_money" property="payMoney" jdbcType="DECIMAL" />
+    <result column="pay_mode" property="payMode" jdbcType="VARCHAR" />
+    <result column="pay_mode_sap" property="payModeSap" jdbcType="VARCHAR" />
+    <result column="pay_bank" property="payBank" jdbcType="VARCHAR" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="staging_count" property="stagingCount" jdbcType="INTEGER" />
+    <result column="counter_fee" property="counterFee" jdbcType="DECIMAL" />
+    <result column="is_repeat_pay" property="isRepeatPay" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, order_id, cashier_no, trans_no, merchant_no, pay_money, pay_mode, pay_mode_sap, 
+    pay_bank, pay_time, staging_count, counter_fee, is_repeat_pay, create_time, update_time
+  </sql>
+  
+  <!-- 根据条件查询订单支付信息-->
+  <select id="getOrderPay" parameterType="cn.com.gome.dujia.model.OrderPay" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dj_order_pay
+    <where>
+      <if test="orderId != null">
+        and order_id = #{orderId,jdbcType=VARCHAR}
+      </if>
+      <if test="cashierNo != null">
+        and cashier_no = #{cashierNo,jdbcType=VARCHAR}
+      </if>
+      <if test="transNo != null">
+        and trans_no = #{transNo,jdbcType=VARCHAR}
+      </if>
+      <if test="merchantNo != null">
+        and merchant_no = #{merchantNo,jdbcType=VARCHAR}
+      </if>
+      <if test="isRepeatPay != null">
+        and is_repeat_pay = #{isRepeatPay,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+  
+  <!-- 根据推送sap信息查询订单支付信息-->
+  <select id="queryOrderPayByPushSap" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select t1.*
+    from dj_order_pay t1, dj_push_sap t2
+    <where>
+      t1.id = t2.business_no
+      <if test="sapType != null">
+  		and t2.sap_type = #{sapType,jdbcType=INTEGER}
+  	  </if>
+  	  <if test="sapStatusList !=null">
+ 		and t2.push_status in 
+ 		<foreach close=")" collection="sapStatusList" index="index" item="item" open="(" separator=",">
+   			#{item}
+   		</foreach>
+ 	  </if>
+  	  <if test="pushNum != null">
+  		<![CDATA[and t2.push_num < #{pushNum,jdbcType=INTEGER}]]>
+  	  </if>
+    </where>
+  </select>
+
+  <!-- 根据条件查询订单所有支付信息列表-->
+  <select id="getOrderPayList" parameterType="cn.com.gome.dujia.model.OrderPay" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from dj_order_pay
+    <where>
+      <if test="orderId != null">
+        and order_id = #{orderId,jdbcType=VARCHAR}
+      </if>
+      <if test="cashierNo != null">
+        and cashier_no = #{cashierNo,jdbcType=VARCHAR}
+      </if>
+      <if test="transNo != null">
+        and trans_no = #{transNo,jdbcType=VARCHAR}
+      </if>
+      <if test="merchantNo != null">
+        and merchant_no = #{merchantNo,jdbcType=VARCHAR}
+      </if>
+      <if test="isRepeatPay != null">
+        and is_repeat_pay = #{isRepeatPay,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+</mapper>

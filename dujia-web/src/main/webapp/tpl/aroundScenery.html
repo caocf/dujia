@@ -1,0 +1,13 @@
+<%for(var item in aroundScenery){%>
+    <dl class="">
+        <dt class="fontmaincolor"><%=item%></dt>
+        <dd>
+            <ol>
+                <%for(var i=0;i< aroundScenery[item].length;i++){%>
+
+                    <li><a href="<%=dev%>/<%==aroundScenery[item][i].cityPy%>/t-d-c-s<%=aroundScenery[item][i].id %>-h.html" title="<%=aroundScenery[item][i].name%>"><%=aroundScenery[item][i].name%> </a></li>
+                <%}%>
+            </ol>
+        </dd>
+    </dl>
+<%}%>

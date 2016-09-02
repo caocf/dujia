@@ -1,0 +1,60 @@
+<%for(var i=0; i< arrData.length; i++){%>
+<div class="floor">
+    <%if(arrData[i].value=="F1"){%>
+        <h1><%=arrData[i].name%></h1>
+    <%}else{%>
+        <h2><%=arrData[i].name%></h2>
+    <%}%>
+    <ul class="clearfix">
+        <%for(var j=0 ;j< arrData[i].data.length; j++){%>
+            <%if(arrData[i].value=="F1" && arrData[i].flag && j == 0){%>
+                <li class="cols2" >
+                    <a href="<%=arrData[i].data[j].productUrl%>" title="<%=arrData[i].data[j].titleName%>" target="_blank">
+                        <dl>
+                            <dt>
+                                <img src="images/grey.gif" data-lazy-init="<%=arrData[i].data[j].imageUrl%>" alt="<%=arrData[i].data[j].titleName%>" width="592" height="295">
+                            </dt>
+                            <dd><%=arrData[i].data[j].productName%></dd>
+                        </dl>
+                    </a>
+                </li>
+            <%}else if(arrData[i].flag && j == 0){%>
+                <li class="rowspan">
+                    <%if(arrData[i].data[j].productUrl != null && arrData[i].data[j].productUrl !=""){%>
+                        <a href="<%=arrData[i].data[j].productUrl%>" title="<%=arrData[i].data[j].titleName%>" target="_blank">
+                    <%}else{%>
+                        <a href="<%=dev%>/<%=arrData[i].data[j].productId%>.html" title="<%=arrData[i].data[j].titleName%>" target="_blank">
+                    <%}%>
+                        <dl>
+                            <dt>
+                                <img src="images/grey.gif" data-lazy-init="<%=arrData[i].data[j].imageUrl%>" alt="<%=arrData[i].data[j].titleName%>" width="288" height="295">
+                            </dt>
+                        </dl>
+                    </a>
+                </li>
+            <%}else{%>
+                <li>
+                    <%if(arrData[i].data[j].productUrl != null && arrData[i].data[j].productUrl !=""){%>
+                        <a href="<%=arrData[i].data[j].productUrl%>" title="<%=arrData[i].data[j].productName%>" target="_blank">
+                    <%}else{%>
+                        <a href="<%=dev%>/<%=arrData[i].data[j].productId%>.html" title="<%=arrData[i].data[j].productName%>" target="_blank">
+                    <%}%>
+                        <dl>
+                            <dt>
+                                <img src="images/grey.gif" data-lazy-init="<%=arrData[i].data[j].imageUrl%>" alt="<%=arrData[i].data[j].productName%>" width="288" height="200">
+                            </dt>
+                            <dd >
+                                <p class="product_tit"><%=arrData[i].data[j].productName%></p>
+                                <p class="clearfix">
+                                    <span class="price"><i>¥</i> <strong><%=arrData[i].data[j].minPrice%></strong> 起/份</span>
+                                    <span class="city"><%=arrData[i].data[j].cityName%></span>
+                                </p>
+                            </dd>
+                        </dl>
+                    </a>
+                </li>
+            <%}%>
+        <%}%>
+    </ul>
+</div>
+<%}%>

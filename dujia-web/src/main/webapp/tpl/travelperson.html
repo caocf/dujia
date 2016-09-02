@@ -1,0 +1,34 @@
+<ul class="personform_info trip_person" onlyid="<%=onlyid%>">
+    <li class="info_line clearfix">
+        <ol>
+            <li class="title required">姓名：</li>
+            <li>
+                <span><input type="text" name="" value="<%=name%>" class="name" maxlength="6" placeholder="请输入联系人姓名"></span>
+                <span class="error errorName"></span>
+            </li>
+        </ol>
+    </li>
+    <li class="info_line clearfix">
+        <ol>
+            <li class="title required">手机号：</li>
+            <li>
+                <span><input type="text" name="" value="<%=mobile%>" class="mobile" placeholder="请输入手机号码"></span>
+                <span class="error errorPhone"></span>
+            </li>
+        </ol>
+    </li>
+    <%if(_need_card=="true"){%>
+        <li class="info_line clearfix">
+            <ol>
+                <li class="title required">身份证号：</li>
+                <li>
+                    <span><input type="text" name="" value="<%=certificateCode%>" class="certificateCode" placeholder="请输入出行人身份证号"></span>
+                    <span class="error errorPhone"></span>
+                </li>
+            </ol>
+        </li>
+    <%}%>
+    <li class="dele">
+        <a href="javascript:" onclick="delTralP(this)"><i></i>删除</a>
+    </li>
+</ul>

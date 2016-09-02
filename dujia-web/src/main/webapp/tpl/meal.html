@@ -1,0 +1,106 @@
+<div class="comboGroup_toptip" >
+    <ul>
+        <li class="first">
+            套餐名称
+        </li>
+        <li class="sec">
+            游玩景点
+        </li>
+        <li class="third">
+            入住酒店
+        </li>
+        <li class="forth">
+            酒店床型
+        </li>
+        <li class="fifth">
+            用餐
+        </li>
+        <li class="sixth">
+            套餐价
+        </li>
+    </ul>
+</div>
+<div class="comboGroup_main">
+    <%for( var i = 0;i < packages.length && i < 10;i++ ){%>
+    <div class="Jmeal_info">
+        <ul>
+            <li class="title">
+                <a href="javascript:void(0)" packageid="<%=packages[i].packageId%>" title="<%=packages[i].packageLongName%>"><%=packages[i].packageName%></a>
+            </li>
+            <li class="sec">
+                <%for( var j = 0;j < (packages[i].sceneries).length;j++ ){%>
+                <%=(packages[i].sceneries)[j].resName%><br/>
+                <%}%>
+            </li>
+            <li class="third">
+                <%for( var j = 0;j < (packages[i].hotels).length;j++ ){%>
+                <%=(packages[i].hotels)[j].resName%><br/>
+                <%}%>
+            </li>
+            <li class="forth">
+                <%for( var j = 0;j < (packages[i].hotels).length;j++ ){%>
+                <%=(packages[i].hotels)[j].resProName%><br/>
+                <%}%>
+            </li>
+            <li class="fifth">
+                <%for( var j = 0;j < (packages[i].hotels).length;j++ ){%>
+                <%=(packages[i].hotels)[j].supPpName%><br/>
+                <%}%>
+            </li>
+            <li class="sixth">
+                <font>￥<span><%=packages[i].price%></span>/份</font>
+            </li>
+            <li class="last">
+                <a  class="book J_Calender" data-pkid='<%=packages[i].packageId%>'>预订</a>
+            </li>
+        </ul>
+        <div class="mealdetail"></div>
+    </div>
+    <%}%>
+
+    <%if(packages.length>10){%>
+        <div class="more" style="display:none;">
+            <%for( var i = 10;i < packages.length ;i++ ){%>
+            <div class="Jmeal_info">
+                <ul>
+                    <li class="title">
+                        <a href="javascript:void(0)" packageid="<%=packages[i].packageId%>" title="<%=packages[i].packageLongName%>"><%=packages[i].packageName%></a>
+                    </li>
+                    <li class="sec">
+                        <%for( var j = 0;j < (packages[i].sceneries).length;j++ ){%>
+                        <%=(packages[i].sceneries)[j].resName%><br/>
+                        <%}%>
+                    </li>
+                    <li class="third">
+                        <%for( var j = 0;j < (packages[i].hotels).length;j++ ){%>
+                        <%=(packages[i].hotels)[j].resName%><br/>
+                        <%}%>
+                    </li>
+                    <li class="forth">
+                        <%for( var j = 0;j < (packages[i].hotels).length;j++ ){%>
+                        <%=(packages[i].hotels)[j].resProName%><br/>
+                        <%}%>
+                    </li>
+                    <li class="fifth">
+                        <%for( var j = 0;j < (packages[i].hotels).length;j++ ){%>
+                        <%=(packages[i].hotels)[j].supPpName%><br/>
+                        <%}%>
+                    </li>
+                    <li class="sixth">
+                        <font>￥<span><%=packages[i].price%></span>/份</font>
+                    </li>
+                    <li class="last">
+                        <a  class="book J_Calender" data-pkid='<%=packages[i].packageId%>'>预订</a>
+                    </li>
+                </ul>
+                <div class="mealdetail"></div>
+            </div>
+            <%}%>
+        </div>
+    <%}%>
+</div>
+<%if(packages.length>10){%>
+    <div class="comboGroup_more" id="comboGroupMore">
+        <a class="fold">查看更多套餐</a>
+    </div>
+<%}%>

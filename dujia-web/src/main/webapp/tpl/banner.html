@@ -1,0 +1,11 @@
+<%for(var i=0; i< arrData.length; i++){if(i == 0){%>
+    <li style="background-image:url(<%=arrData[i].productImage%>);display:list-item;opacity:1;z-index:1;">
+        <a href="<%=arrData[i].url%>" title="<%=arrData[i].titleName%>" alt="<%=arrData[i].titleName%>" target="_blank" ></a>
+    </li>
+<% }else{ %>
+    <li style="background-image:url(<%=arrData[i].productImage%>);">
+        <a href="<%=arrData[i].url%>" title="<%=arrData[i].titleName%>" alt="<%=arrData[i].titleName%>" target="_blank" ></a>
+    </li>
+<%}}%>';
+
+

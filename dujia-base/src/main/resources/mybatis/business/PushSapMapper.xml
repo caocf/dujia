@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.gome.dujia.mapper.business.PushSapMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.gome.dujia.model.PushSap" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="business_no" property="businessNo" jdbcType="VARCHAR" />
+    <result column="sap_type" property="sapType" jdbcType="TINYINT" />
+    <result column="push_status" property="pushStatus" jdbcType="TINYINT" />
+    <result column="push_num" property="pushNum" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, order_id, business_no, sap_type, push_status, push_num, create_time, update_time
+  </sql>
+  
+  
+  
+  
+  
+  
+  <!-- 根据条件查询推送sap信息 -->
+  <select id="getPushSap" parameterType="cn.com.gome.dujia.model.PushSap" resultMap="BaseResultMap">
+  	select
+	  	<include refid="Base_Column_List" />
+	  	from dj_push_sap
+	  	<where>
+	  	  <if test="orderId != null">
+	  		and order_id = #{orderId,jdbcType=VARCHAR}
+	  	  </if>
+	  	  <if test="businessNo != null">
+	  		and business_no = #{businessNo,jdbcType=INTEGER}
+	  	  </if>
+	  	  <if test="sapType != null">
+	  		and sap_type = #{sapType,jdbcType=INTEGER}
+	  	  </if>
+	  	</where>
+  </select>
+  
+  <select id="queryPushSap" parameterType="cn.com.gome.dujia.model.PushSap" resultMap="BaseResultMap">
+  	select
+  		<include refid="Base_Column_List" />
+  	from dj_push_sap where 1=1
+  		<include refid="whereParam" />
+  	order by create_time desc;
+  </select>
+  
+  <sql id="whereParam">
+  	<if test="orderId != null and orderId != '' ">
+  		and order_id = #{orderId,jdbcType=VARCHAR}
+  	</if>
+  	
+  	<if test="businessNo != null and businessNo != '' ">
+  		and business_no = #{businessNo,jdbcType=INTEGER}
+  	</if>
+  	
+  	<if test="sapType != null">
+  		and sap_type = #{sapType,jdbcType=INTEGER}
+  	</if>
+  	
+  	<if test="pushStatus != null">
+  		and push_status = #{pushStatus,jdbcType=INTEGER}
+  	</if>
+  	
+  	<if test="pushNum != null">
+  		<![CDATA[and push_num < #{pushNum,jdbcType=INTEGER}]]>
+  	</if>
+  </sql>
+  
+  <!-- 批量更新 -->
+  <update id="batchUpdate" parameterType="java.util.List">
+  	<foreach collection="list" index="index" item="item" separator=";">
+	  update dj_push_sap
+	    <set>
+      	  <if test="item.pushStatus != null">
+        	push_status = #{item.pushStatus,jdbcType=TINYINT},
+          </if>
+          <if test="item.pushNum != null">
+        	push_num = #{item.pushNum,jdbcType=INTEGER},
+          </if>
+          <if test="item.updateTime != null">
+            update_time = #{item.updateTime,jdbcType=TIMESTAMP}
+          </if>
+      	</set>
+	    where id = #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+
+	<!-- 查询推送正向SAP信息 -->
+	<select id="queryPushPositiveSapByInfo" parameterType="cn.com.gome.dujia.model.PushSap" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		( SELECT * FROM dj_push_sap WHERE sap_type = 1 OR sap_type = 2 ) t
+		WHERE 1=1
+		<if test="orderId != null and orderId != '' ">
+			and order_id = #{orderId,jdbcType=VARCHAR}
+		</if>
+		<if test="pushStatus != null">
+			and push_status = #{pushStatus,jdbcType=INTEGER}
+		</if>
+		<if test="pushNum != null">
+			<![CDATA[and push_num >= #{pushNum,jdbcType=INTEGER}]]>
+		</if>
+		order by create_time desc;
+	</select>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+      INSERT INTO dj_push_sap(
+        order_id,
+        business_no,
+        sap_type,
+        push_status,
+        push_num,
+        create_time,
+        update_time
+      ) VALUES
+      <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.orderId},
+        #{item.businessNo},
+        #{item.sapType},
+        #{item.pushStatus},
+        #{item.pushNum},
+        #{item.createTime},
+        #{item.updateTime}
+      )
+      </foreach>
+    </insert>
+</mapper>

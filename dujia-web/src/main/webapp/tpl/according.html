@@ -1,0 +1,15 @@
+<h2>周边去哪玩</h2>
+<div class="slider_box">
+    <ul id="slider">
+        <%for(var i =0;i< arrData.length;i++){%>
+        <li class="slide">
+            <a href="/<%=arrData[i].cityPinyin%>/t-d-c<%=arrData[i].aroundCityId%>-s-h.html"><img class="diapo" src="<%=arrData[i].imageUrl%>" alt=""></a>
+            <div class="text">
+                <span class="title"><%=arrData[i].aroundCityName%></span>
+                </br>
+                <%=arrData[i].keyword%>
+            </div>
+        </li>
+        <%}%>
+    </ul>
+</div>

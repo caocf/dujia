@@ -1,0 +1,174 @@
+.orders_train th {
+    height: 40px;
+    background: #f3f3f3;
+    text-align: center;
+    color: #5e5e5e;
+}
+.orders_train td {
+    text-align: center;
+    color: #aaaaaa;
+    border-bottom: 1px solid #f3f3f3;
+    line-height: 20px;
+    height: 74px;
+}
+.orders_train_control .time {
+    margin-right: 5px;
+    vertical-align: middle;
+    position: static;
+    margin-top: 14px;
+    font-family: "Arial";
+}
+.orders_train_control .time-ico {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+    position: static;
+    margin-top: 0px;
+}
+
+.paging {
+    /* width: 430px; */
+    height: 30px;
+    float: right;
+    margin-top: 30px;
+    margin-right: 20px;
+    white-space: nowrap;
+}
+.paging-left {
+    /* width: 300px; */
+    height: 30px;
+    float: left;
+}
+.paging-right {
+    /* width: 120px; */
+    height: 30px;
+    float: left;
+    _width: 128px;
+}
+.previous, .next {
+    width: 69px;
+    height: 30px;
+    float: left;
+}
+.paging .heavycolor, a.heavycolor:hover {
+    background: #f8f8f8;
+    color: #ccc;
+}
+.previous a, .next a {
+    width: 68px;
+    background: #fff;
+    display: block;
+    color: #5e5e5e;
+    line-height: 28px;
+    text-align: center;
+    float: left;
+    border: 1px solid #ddd;
+}
+.next .next-sign, .previous .previous-sign {
+    font-weight: bold;
+    cursor: default;
+}
+.next .next-sign, .previous .previous-sign {
+    font-family: A;
+    color: #ccc;
+}
+/*  page begin */
+.page-num {
+    /* width: 148px; */
+    height: 30px;
+    float: left;
+}
+.page-num li {
+    width: 32px;
+    height: 28px;
+    background: #fff;
+    border: 1px solid #dddddd;
+    border-right: none;
+    float: left;
+    text-align: center;
+    font-size: 14px;
+    line-height: 28px;
+}
+
+.page-num a {
+    color: #5e5e5e;
+    display: block;
+    font-family: Microsoft YaHei,arial;
+}
+.page-num a.current {
+    color: #a5a5a5;
+    border-color: #ccc;
+    background: #f8f8f8;
+}
+.to-page {
+    /* width: 70px; */
+    height: 30px;
+    float: left;
+    text-align: center;
+    white-space: nowrap;
+}
+.to-page span {
+    float: left;
+    color: #999999;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+    /* margin: 0 2px 0; */
+    margin: 2px 4px 0 6px;
+    zoom: 1;
+}
+.to-page input {
+    float: left;
+    width: 33px;
+    height: 25px;
+    text-align: center;
+    margin-top: 3px;
+    border: 1px solid #ddd;
+    font-family: Microsoft YaHei,arial;
+}
+.warp-sure {
+    margin-top: 3px;
+    display: inline-block;
+}
+
+.pop_cancel_order{
+    position:absolute;
+    width:313px;
+    height:80px;
+    background:#fff;
+    border: solid 4px #A5A5A5\9;
+    box-shadow: 0px 0px 40px rgba(0,0,0,.19);
+    right:62px;
+    display:none;
+
+}
+
+.pop_cancel_order .btn_flight_close{
+    float:right;
+    width:16px;
+    height:12px;
+    margin-top:10px;
+    margin-right:10px;
+    background: url(../images/order_flight_bg.png) 0 -47px no-repeat;
+}
+.pop_cancel_order .btn_flight_close{
+    background:url(../images/order_flight_bg.png) -13px -46px no-repeat;
+}
+
+.pop_cancel_order .tip_icon{
+    float:left;
+    width:44px;
+    height:44px;
+    margin-left:20px;
+    background:url(../images/order_flight_bg.png) 0 0 no-repeat;
+}
+.pop_cancel_order .tip_worp{
+    float:left;
+    margin-left:10px;
+    height:40px;
+    line-height:40px;
+    color:#333;
+    display:inline;
+}

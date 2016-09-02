@@ -1,0 +1,12 @@
+.td1{border-bottom:solid 1px #cdd1d2;border-right:solid 1px #cdd1d2; background:repeat-y #ececee;}
+/**page**/
+.page{width:100%;text-align:right;background:#ebecf0;border-left:1px solid #ccc;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:0px;margin-bottom:0px;}
+.homepage{background:url(../images/homepage.gif) left top no-repeat;width:18px; height:18px;border:none;cursor:pointer}
+.homepagedisabled{background:url(../images/homepage.gif) 0px -18px no-repeat;width:18px; height:18px;border:none; }
+.nextpage{background:url(../images/next.gif) left top no-repeat;width:18px; height:18px;border:none;cursor:pointer}
+.nextpagedisabled{background:url(../images/next.gif) 0px -18px no-repeat;width:18px; height:18px;border:none; }
+.prepage{background:url(../images/pre.gif) left top no-repeat;width:18px; height:18px;border:none;cursor:pointer}
+.prepagedisabled{background:url(../images/pre.gif) 0px -18px no-repeat;width:18px; height:18px;border:none; }
+.lastpage{background:url(../images/last.gif) left top no-repeat;width:18px; height:18px;border:none;cursor:pointer}
+.lastpagedisabled{background:url(../images/last.gif) 0px -18px no-repeat;width:18px; height:18px; }
+.gopage{background:url(../images/go.gif) left top no-repeat;width:18px; height:18px;border:none;cursor:pointer}

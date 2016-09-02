@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 消费方应用名称  -->
+    <dubbo:application name="consumer"/>
+
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+	<dubbo:registry protocol="zookeeper" address="${zookeeper.address}"/>
+	<!-- 常用联系人 -->
+	<dubbo:registry id="tripuniteConsumer" protocol="zookeeper" address="${trip.unite.zookeeper.address}"/>
+
+	<dubbo:reference id="userTravelerService" 
+					interface="cn.com.gome.trip.unite.service.UserTravelerService"
+					registry="tripuniteConsumer" loadbalance="random" check="false"
+					timeout="10000" />
+		
+	<dubbo:reference id="concatService"
+					interface="cn.com.gome.trip.unite.service.ConcatService"
+					registry="tripuniteConsumer" loadbalance="random" check="false"
+					timeout="10000" />
+	<!-- 常用联系人 -->
+
+	<!-- gomeip转换服务 start-->
+	<dubbo:registry id="IpInfoSerivceConsumer" protocol="zookeeper" address="${gomeip.zookeeper.address}" />
+	
+	<dubbo:reference id="queryIpInfoService"
+					interface="com.gome.ipquery.service.QueryIpInfoService" version="1.0"    
+					registry="IpInfoSerivceConsumer" loadbalance="random" check="false"
+					timeout="10000" />
+	<!-- gomeip转换服务 end-->
+
+	<!-- 城市服务 -->
+	<dubbo:reference id="zbyCityService" interface="cn.com.gome.dujia.service.ZbyCityService" protocol="dubbo" />
+	<!-- 产品服务 -->
+	<dubbo:reference id="zbyProductService" interface="cn.com.gome.dujia.service.ZbyProductService" protocol="dubbo" />
+	<!-- 线路套餐服务 -->
+	<dubbo:reference id="zbyProductPackageService" interface="cn.com.gome.dujia.service.ZbyProductPackageService" protocol="dubbo" timeout="10000"  />
+	<!-- 线路套餐详情服务 -->
+	<dubbo:reference id="zbyProductPackageDetailService" interface="cn.com.gome.dujia.service.ZbyProductPackageDetailService" protocol="dubbo" timeout="10000"  />
+	<!-- 订单服务 -->
+	<dubbo:reference id="orderService" interface="cn.com.gome.dujia.service.OrderService" protocol="dubbo" retries="0" timeout="10000"/>
+	<!-- 订单详情服务 -->
+	<dubbo:reference id="orderDetailService" interface="cn.com.gome.dujia.service.OrderDetailService" protocol="dubbo" />
+	<!-- 同程服务 -->
+	<dubbo:reference id="tcService" interface="cn.com.gome.dujia.service.TcService" protocol="dubbo" retries="0" timeout="10000"/>
+	<!-- 收银台服务 -->
+	<dubbo:reference id="cashierService" interface="cn.com.gome.dujia.service.CashierService" protocol="dubbo" />
+	<!-- 搜索服务 -->
+	<dubbo:reference id="searchService" interface="cn.com.gome.dujia.service.SearchService" protocol="dubbo" />
+	<!-- 缓存服务 -->
+	<dubbo:reference id="redisCacheService" interface="cn.com.gome.dujia.service.RedisCacheService" protocol="dubbo" />
+    <!-- 退款服务 -->
+    <dubbo:reference id="orderRefundService" interface="cn.com.gome.dujia.service.OrderRefundService" protocol="dubbo" />
+    <!-- 订单状态日志服务 -->
+    <dubbo:reference id="orderStatusLogService" interface="cn.com.gome.dujia.service.OrderStatusLogService" protocol="dubbo" />
+</beans>

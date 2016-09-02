@@ -1,0 +1,23 @@
+<div class="">
+    <div class="detail_head clearfix">
+        <h3><%=ResName%></h3>
+        <span class="close"></span>
+    </div>
+    <div class="detail_content">
+        <p class="address"><%=Address%></p>
+        <ul class="clearfix pop_img_list">
+            <%if(smallImg!=null){%>
+                <%for(var i =0;i< smallImg.length && i < 8;i++){%>
+                <li class="nor" bigsrc="<%=bigImg[i]%>">
+                    <img src="<%=smallImg[i]%>" alt="" class="" >
+                </li>
+            <%}}%>
+        </ul>
+        <div id="bigImg"></div>
+        <div class="detail_description">
+           <%==ResIntro%>
+        </div>
+    </div>
+</div>
+</body>
+</html>

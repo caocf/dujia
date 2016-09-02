@@ -1,0 +1,19 @@
+<%for(var i=0;i < data.length; i++){%>
+<li <%if(i==0){%>class="active"<%}%> >
+    <a href="<%=dev%>/<%=data[i].productId%>.html">
+        <dl>
+            <dt>
+                <img src="<%=data[i].rightImageUrl%>" alt="<%=data[i].mainName%>" width="208">
+            </dt>
+            <dd class="tit">
+                <span><%=i+1%></span>
+                <p><%=data[i].mainName%></p>
+            </dd>
+            <dd class="price clearfix">
+                <span class="num">¥ <i><%=data[i].productMinPrice%></i> 起/份</span>
+                <span class="saled"><%=data[i].cityName%></span>
+            </dd>
+        </dl>
+    </a>
+</li>
+<%}%>

@@ -1,0 +1,159 @@
+html{*overflow-y:hidden}
+body{ width:100%; margin:0 auto;background:#828d97 url(http://p1.gomeart.net/images/topbg.gif) top repeat-x; padding:0;font-size:12px;overflow:hidden;}
+input,textarea,select{padding:1px 0 0 1px;margin:0; vertical-align:middle; color:#485058; font-size:12px}
+a{color:#5f676e; text-decoration:none;}
+a:hover{color:#ea5504;}
+img{border:0;vertical-align:middle;}
+select{vertical-align:middle;}
+input{color:#485058;}
+table{border:none; width:100%; color:#485058; font-size:12px;border-collapse:collapse;border-spacing:0;}
+
+.fB{font-weight:bold;}
+.fM{font-weight:normal;}
+.UnderLine{text-decoration:underline;}
+.VarTop{ vertical-align:top}
+.WhiSpa{white-space:normal;}
+.CYellow{color:#ea5504}
+.CBlue{color:#0066CC}
+.CRed{color:#990000}
+.CWhite{color:#fff;}
+.LText{color:#e0e4ed;}
+.MText{color:#A5A5A5}
+.DText{color:#4c555d;}
+.green{color:#009900;}
+.red{color:#FF0000;}
+.TFff{color:#fff;}
+.FloRig{float:right;}
+.TextLeft{text-align:left;}
+.TextRig{text-align:right;}
+.TextCen{text-align:center;}
+.GLray{background:#f9f9f9;}
+.GDray{background:#e7eaee;}
+.GDDray{ background:#c9cdd2}
+.GDDDray{ background:#838e9b}
+.GDDDray a{color: white}
+.GBodray{background:#636f78;}
+.BodBot{border-bottom:1px solid #636f78;}
+.BodTop{border-top:1px solid #636f78;}
+.BodLeft{border-left:1px solid #636f78;}
+.BodRit{border-right:1px solid #636f78;}
+.Boder{border:1px solid #636f78;}
+.LBoder{ border:1px solid #99a0a8}
+.LBodBot{border-bottom:1px solid #99a0a8;}
+.LBodTop{border-top:1px solid #99a0a8;}
+.LBodLeft{border-left:1px solid #99a0a8;}
+.LBodRit{border-right:1px solid #99a0a8;}
+.H10{height:10px;}
+.H5{ height:5px;}
+.Pointer{ cursor:pointer}
+
+.Top{width:100%; overflow:hidden;height:106px;margin:0;background:url(http://p1.gomeart.net/images/topbg.gif) top left repeat-x;}
+.Exit{ float:right;width:320px;height:53px; margin-top:35px;padding:8px 0 0 0;background:url(http://p1.gomeart.net/images/exit.gif) top left no-repeat; font-size:12px;}
+.Exit .ExitLeft{float:left; padding:0 35px; width:145px; text-align:center;display:block}
+.Exit .ExitRit{float:left;width:50px; display:block}
+.Nav{ float:left;width:35%;}
+.Con{ float:left; width:100%;}
+
+.Logo{ float:left; display:inline; width:100%;height:51px;margin:18px auto auto 26px; background:url(http://p1.gomeart.net/images/LOGO.gif) top left no-repeat;}
+.LeftNav{ float:left; display:inline; width:191px; height:29px; padding:5px 0 0 9px;}
+.LeftNavbot{ float:left; display:inline;padding-left:9px;}
+
+.LeftNavCon{ float:left; width:200px;margin-bottom:10px;}
+
+.SideBar{float:left;display:inline;width:189px;overflow-y:scroll; overflow-x:hidden}
+.SideBar .SideCon{width:189px;}
+.SideBar .NavBG{background:url(http://p1.gomeart.net/images/Leftnav_1.gif) left top repeat-x;width:189px; height:27px;}
+.SideBar .NavBGTwo{height:30px;}
+.SideBar .NavCon{height:15px; width:189px;}
+
+.SideBar .NavIcon{ width:28px; text-align:right;}
+.NavText{ padding-left:6px; font-weight:bold;}
+.NavLeft{ padding-left:6px;}
+.NavText a:hover{ color:#fff; text-decoration:none;}
+.SideBar .NavIconTwo{width:30px; text-align:right;height:26px;line-height:26px;}
+.SideBar .NavTextTwo{padding-left:3px;*padding-left:0;height:26px;line-height:26px; text-align:left; width:145px;}
+.SideBar .NavTextTwo a:hover{ color:#ea5504; text-decoration:none;}
+.SideBar .Dline{ background:#bbc3cb; height:1px;}
+.SideBar .Lline{ background:#f2f3f3; height:1px;}
+
+.Right{padding-left:205px;}
+.RightCon{width:98.5%; height:480px;padding:5px;background:#636f78;}
+.RightCon .RightTitle{ height:31px; line-height:31px; background:url(http://p1.gomeart.net/images//RigNav.gif)}
+.RightCon .RightConTit{ padding-left:6px; font-weight:bold;}
+.RightCon h2{margin:0 auto; font-size:16px; font-weight:700; padding-left:50px;}
+.RightBg{margin:0; padding:6px; background-color:#afb8bf;}
+.RightBg td{ height:30px;}
+
+.RightTab{padding:8px;color:#4c555d;border:1px #636f78 solid; background-color:#f9f9f9;}
+#RightTab td{ height:auto; line-height:30px; white-space:normal}
+.RightTabBot{padding:15px;color:#4c555d;border:1px #99a0a8 solid; background-color:#e7eaee;}
+.RightTabCon{background:#f9f9f9; color:#e7eaee;}
+.RightTabTags{ height:100%}
+.RightTabTags .VarTitle{width:77px; background:url(http://p1.gomeart.net/images/Tags_1.gif) no-repeat;}
+.RightTabTags td{ height:30px; line-height:30px;}
+.RightTabTags .DivBaoXiu{ line-height:22px;}
+
+.ChoPop{width:100px; padding:5px; border:1px #ccc solid; border-top:none; line-height:22px;}
+
+.Login{width:498px; height:320px; margin:0 auto; margin-top:113px;padding-top:118px;background:url(http://p1.gomeart.net/images/LoginBg.gif) left top no-repeat;}
+.Enter{ width:165px; float:left; padding-left:140px;}
+.Username{width:165px; height:25px; margin-bottom:20px;}
+.LogIcon{ float:left; width:79px; height:68px; margin:2px auto auto 50px;}
+.Username input{width:165px; height:20px; color:#404040; padding:2px 0 0 7px;}
+.Tel{ float:left; width:420px;padding:50px 0 0 70px; color:#233f51;}
+
+.ThrClass{ background:#fff; border:1px #99a0a8 solid; padding:3px;padding-bottom:5px; white-space:normal;}
+.ThrClass a{display:block;float:left;width:60px;height:22px;line-height:22px; padding:0 8px 0 12px;text-decoration:none;}
+
+.AddRightBg{width:600px;padding:9px; background-color:#afb8bf; margin:0 auto; margin-top:30px;margin-bottom:30px;}
+.AddRightTab{padding:15px;color:#4c555d;border:1px #99a0a8 solid; background-color:#e7eaee;}
+.Fd{ width:800px; height:20px; line-height:20px; border:1px #99a0a8 solid;padding:10px 20px; z-index:2;position:absolute; background:#e7eaee; margin:10px 0}
+.Fd span{ padding-left:20px;}
+.Pointer{ cursor:pointer;}
+
+.AddRightTable{ width:300px; float:left;padding:0 5px 10px 5px;}
+.clear{clear:both;height:0;font-size:0;line-height:0;}
+.AddRightTable table{ margin:5px auto;}
+
+#helper{position:relative;}
+.helper{width:203px;}
+.helper .Tips{position:absolute; z-index:2; width:203px;padding:3px 0; margin:0;background:#fff;border:1px #7f9db9 solid; border-top:none;  color:#5f676e; left:6px; top:0;}
+.helper .Tips ul{ height:22px; line-height:22px; width:195px; text-align:left; display:block; padding-left:3px;margin:0;}
+
+.baioti{ margin-bottom:5px; line-height:20px;}
+.baioti a{ text-decoration:none;}
+
+.tdbg{background-image:url(http://p1.gomeart.net/images/RigNav.gif);}
+.breakword{word-wrap: break-word;word-break:break-all;}
+table.t-even{background-color: #eeeeef;}
+.ddlb_box_ydh{line-height: 21px;padding: 6px 0;width: 100px;border-bottom: 1px solid #B2D2EE;border-right: 1px solid #B2D2EE;font-weight: normal;height: 29px;word-wrap: break-word;}
+.hidden{width:120px;overflow:hidden; height:30px;}
+
+.HalfWidth{ width:700px; max-height:230px;padding:6px;float:left; white-space:nowrap; overflow-y:scroll; overflow-x:hidden}
+.DiaTable{display:block;width:420px; max-height:300px;white-space:nowrap; overflow-y:scroll; overflow-x:hidden; margin-top:5px;}
+.rcc_szfdxl{width:386px;padding:6px;float:left; background:#e7eaee;border:1px solid #636f78;}
+.rcc_szfdxl td{ height:35px; line-height:35px; white-space:normal;}
+.rcc_szfdxl strong{float:left;}
+.rcc_szfdxl h3{ height:30px; line-height:30px;color:#4c555d; font-size:12px}
+.rcc_szfdxl span{float:right;cursor:pointer; font-size:12px; font-weight:normal;color:#4c555d;}
+.rcc_szfdxl_bg li{height:30px;}
+.rcc_szfdxl_bg label,.rcc_szfdxl_bg input{float:left;}
+.rcc_szfdxl_bg label{width:90px;}
+.rcc_szfdxl_bg{width:363px;float:left;padding:10px 0 10px 25px; background:none;}
+.main .rcc_szfdxl_bg p{clear:both;}
+.main .rcc_szfdxl_bg p label{height:21px;line-height:21px;float:left;}
+.main .rcc_szfdxl_bg p textarea{width:268px;height:70px;}
+.tcc_btn a{background:url(http://p1.gomeart.net/images/btn_xzys.gif) no-repeat 0 0;width:100px;height:25px;line-height:25px;text-align:center;color:#000000;float:left; margin-left:20px;display:inline;margin-top:10px;}
+.tcc_btn{margin-left:40px;clear:both;}
+
+td.15width{width:15%;}
+select.myselect{width: 70px;}
+.ddlb_box_ydh{padding: 6px 0; line-height: 21px;}
+.paddingr14{padding-right: 14px;}
+.current {background: none repeat scroll 0 0 #E9ECF0;color: #666666;height: 27px;line-height: 27px;margin-top: 5px;padding: 0 20px;width: 860px;}
+.blockleft {padding-top: 15px;width: 450px;float: left;}
+.blockright {float: right;padding-top: 15px;width: 400px;}
+
+.RightTabFiv{ width:19%; padding:0 3px 5px 3px;float:left; height:auto;}
+
+.IdeaCon{display:block;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow:hidden;line-height:24px; max-height:70px; width:300px; margin:0 auto}

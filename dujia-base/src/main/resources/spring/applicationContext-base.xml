@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+        
+    <!-- 扫描cn.com.gome.dujia及子包，自动实例化带@注释的实例，这里排除@Controller，所有Controller的实例化在springmvc-servlet中完成 -->
+    <context:component-scan base-package="cn.com.gome.dujia">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+
+	<!-- 短信 消费方 dubbo start -->
+	<!-- 注册短信服务 -->
+	<dubbo:registry id="smsSerivceConsumer" protocol="zookeeper" address="${sms.zookeeper.address}" />
+		
+	<dubbo:reference id="dubboSMSMessage" 
+					 group="InterfaceSchedule-sms" 
+					 registry="smsSerivceConsumer"
+					 interface="com.gome.commerce.Interface.smsmail.DubboSMSMessage" 
+					 check="false" 
+					 timeout="10000"/>
+	<!-- 短信 消费方 dubbo end -->		
+	
+	<!-- 用户地址 消费方 dubbo start -->
+	<dubbo:registry id="addressConsumer" protocol="zookeeper" address="${io.zookeeper.address}" />
+	
+	<dubbo:reference id="profileFacet" 
+					 interface="com.gome.io.facet.profile.ProfileFacet" 
+					 registry="addressConsumer" 
+					 loadbalance="random" 
+					 check="false" 
+					 timeout="10000" />
+	<!-- 用户地址 消费方 dubbo end -->
+	
+	
+	<!-- gfs图片服务 -->
+	<bean id="gisClient" class="cn.com.gome.gis.client.GisClient" >
+        <property name="serviceUrl" value="${gis_service_url}" />
+        <property name="token" value="${gis_image_token}" />
+    </bean>
+	
+	<!-- 搜索服务 -->
+	<bean id="elasticSearchHandler" class="cn.com.gome.dujia.es.ElasticSearchHandler" init-method="init" destroy-method="destory">
+		<property name="address" value="${elasticSearch_address}" />
+		<property name="clusterName" value="${elasticSearch_cluster_name}" />
+	</bean>
+	
+	<!-- 订单号生成器 -->
+	<bean id="orderIdGenerator" class="com.gome.plan.tools.curator.IdGenerator.SequenceIdGenerator">
+		<constructor-arg value="${zookeeper.address}" />
+		<constructor-arg value="/${business_name}/${order_node_path}" />
+		<constructor-arg value="${order_seed}" />
+	</bean>
+	
+	<!-- 退款单号生成器 -->
+	<bean id="refundIdGenerator" class="com.gome.plan.tools.curator.IdGenerator.SequenceIdGenerator">
+		<constructor-arg value="${zookeeper.address}" />
+		<constructor-arg value="/${business_name}/${refund_node_path}" />
+		<constructor-arg value="${refund_seed}" />
+	</bean>
+
+	<!-- 线程池配置 -->
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<!-- 线程池维护线程的最少数量  -->
+		<property name="corePoolSize" value="10"/>
+		<!-- 线程池维护线程的最大数量 -->
+		<property name="maxPoolSize" value="50"/>
+		<!-- 线程池所使用的缓冲队列 -->
+		<property name="queueCapacity" value="1000"/>
+		<!-- 线程池维护线程所允许的空闲时间 -->
+		<property name="keepAliveSeconds" value="3000"/>
+		<!-- 线程池对拒绝任务(无线程可用)的处理策略 -->
+		<property name="rejectedExecutionHandler">
+			<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy"/>
+		</property>
+	</bean>
+
+</beans>

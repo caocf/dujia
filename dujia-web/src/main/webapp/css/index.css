@@ -1,0 +1,645 @@
+.hidden{
+	position: relative;
+    z-index: 10;
+}
+/* banner */
+.banner {
+	width: 100%;
+	height: 510px;
+	position: relative;
+	margin: 0 auto;
+	z-index: 10;
+	text-align: center;
+}
+
+.banner ol {
+	position: absolute;
+	left: 50%;
+	margin-left: 420px;
+	bottom: 50px;
+	z-index: 50;
+}
+
+.banner ol li {
+	float: left;
+	width: 15px;
+	height: 15px;
+	margin-right: 15px;
+	display: inline;
+	cursor: pointer;
+	background: #f0ece9;
+}
+
+.banner ol li.active {
+	background: #ff8000;
+}
+
+.banner ul {
+	position: relative;
+	top: 0;
+	left: 0px;
+	margin: 0px auto;
+	height: 510px;
+	z-index: 1;
+	text-align: center;
+}
+
+.banner ul li {
+	width: 100%;
+	height: 510px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	opacity: 1;
+	filter: alpha(opacity : 100);
+	margin: 0px auto;
+	text-align: center;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+	
+}
+
+.banner li a {
+	width: 100%;
+	height: 510px;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+
+/* 搜索框 */
+.search_box{
+	width: 100%;
+	height: 70px;
+	position: absolute;
+    top: 111px;
+	z-index: 110;
+}
+.search_box .backover{
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    opacity: 0.3;
+    filter: alpha(opacity : 30);
+    z-index: 10;
+}
+.search_box .search_content{
+    width: 1200px;
+    margin: 15px auto 0;
+    line-height: 34px;
+    position: relative;
+    z-index: 99;
+}
+.search_box .baseData{
+	height: 40px;
+}
+.search_box .curr_city{
+	float: left;
+	font-size: 16px;
+	padding: 0 28px 0 15px;
+	max-width: 84px;
+	background: #fff;
+	border:3px solid #ff8000;
+	border-right: 0 none;
+	border-radius:  20px 0 0 20px;
+	-webkit-border-radius: 20px 0 0 20px;
+	-moz-border-radius: 20px 0 0 20px;
+	-ms-border-radius:20px 0 0 20px;
+	position: relative;
+}
+.search_box .curr_city .city_arrow{
+	position: absolute;
+	width: 11px;
+	height: 8px;
+	top: 11px;
+	right: 10px;
+	background-image: url(../images/common_bg.png);
+	background-repeat: no-repeat;
+	
+}
+.search_box .curr_city.fold .city_arrow{
+	background-position: 0 0;
+}
+.search_box .curr_city.unfold .city_arrow{
+	background-position: -11px 0;
+ }
+
+
+
+.search_box .curr_city .location{
+	padding-left: 20px;
+	background:url(../images/common_bg.png) no-repeat -3px -174px;
+	display: block;
+	height: 34px;
+	max-width: 116px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.search_box .curr_city a{
+	text-decoration: none;
+	color: #666;
+}
+/*.search_box i{
+	display: inline-block;
+	width: 11px;
+    height: 8px;
+    margin-bottom: 3px;
+	margin-left: 25px;
+	background-image: url(../images/common_bg.png);
+	background-repeat: no-repeat;
+}*/
+
+
+
+.search_box  .searchcon{
+	margin: 0 auto;
+	width: 770px;
+	position: relative;
+}
+.search_box button{
+	float: left;
+	width: 120px;
+	height: 40px;
+	background: #ff8000;
+	outline: none;
+	color: #fff;
+	font-size: 18px;
+	cursor: pointer;
+	border: 3px solid #ff8000;
+	border-left: 0 none;
+	border-radius: 0 20px 20px 0;
+	-webkit-border-radius: 0 20px 20px 0;
+	-moz-border-radius: 0 20px 20px 0;
+	-ms-border-radius: 0 20px 20px 0;
+}
+
+.search_box input{
+    width: 493px;
+    height: 34px;
+    line-height: 34px;
+    float: left;
+    padding-left: 20px;
+    color: #555;
+    border-left: 1px solid #ddd;
+	background:#fff;
+	border-top: 3px solid #ff8000;
+	border-bottom: 3px solid #ff8000;
+
+}
+
+
+/* 
+.search_box .hot_search{
+	float: left;
+	margin-left: 80px;
+}
+.search_box .hot_search li{
+	float: left;
+	margin:0 8px;
+	line-height: 46px;
+}
+.search_box .hot_search li a{
+	color: #555;
+}
+.search_box .hot_search li a:hover{
+	color: #888;
+	text-decoration: none;
+} */
+/* 联想层begin */
+.search_box .search_input{
+	width: 635px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+.search_box .think_more{
+	position: absolute;
+	top: 37px;
+	left: 98px;
+	width: 514px;
+	background: #fff;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #f0f0f0;
+	display: none;
+}
+.search_box .think_more ul{
+	padding-top: 5px;
+	border:1px solid #F0f0f0;
+	border-bottom: 0 none;
+	position: relative;
+}
+.search_box .think_more ul .type_icon{
+	content: "";
+	position: absolute;
+	width: 32px;
+	height: 16px;
+	right: 20px;
+	top: 11px;
+	border-radius: 2px;
+	-webkit-border-radius:2px;
+	-ms-border-radius:2px;
+	-moz-border-radius:2px;
+	color: #fff;
+	font-size: 12px;
+	line-height: 16px;
+	text-align: center;
+
+}
+.search_box .think_more .think_address .type_icon{
+	background: #ff7e7c;
+}
+.search_box .think_more .think_scenic .type_icon{
+	background: #68bd7c;
+}
+.search_box .think_more .think_hotel .type_icon{
+	background: #21b9d3;
+}
+.search_box .think_more ul li a{
+	line-height: 28px;
+	padding: 0 20px;
+	display: block;
+	color: #5e5e5e;
+	font-size: 12px;
+	width: 420px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.search_box .think_more ul li a em{
+	color: #ff8000;
+}
+/*联想end*/
+/* 楼层 */
+.floor{
+	margin-top: 10px;
+	/* overflow: hidden; */
+}
+.floor h1,.floor h2{
+	line-height: 58px;
+	color: #333;
+	font-size: 20px;
+	font-weight: bold;
+}
+.floor ul{
+	margin-right: -16px;
+}
+.floor li{
+	float: left;
+	width: 288px;
+	margin-right: 16px;
+    margin-bottom: 16px;
+    background: #fff;
+}
+.floor li:hover{
+	box-shadow: 0 0 10px 5px #ddd;
+  /*   border: 1px solid #eee;
+    margin-left: -2px; */
+}
+
+.floor li.cols2{
+	width: 592px;
+}
+.floor li dd{
+	padding: 0 15px;
+	height: 95px;
+}
+
+.floor li .product_tit{
+	padding-top: 11px;
+	line-height: 22px;
+	color: #666;
+	height: 44px;
+	margin-bottom: 6px;
+	overflow: hidden;
+}
+.floor li.cols2 dl{
+	position: relative;
+}
+.floor li.cols2 dd{
+    position: absolute;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.6;
+	filter:alpha(opacity : 60);
+    left: 0;
+    right: 0;
+    color: #fff;
+    line-height: 40px;
+    padding: 0;
+    height: 40px;
+	text-indent: 2em;
+}
+.floor li .price{
+	font-size: 12px;
+	float: left;
+	color: #ff8000;
+}
+.floor li .price i{
+    font-style: normal;	
+}
+.floor li .price strong{
+    font-weight: normal;
+    font-size: 20px;
+}
+.floor li .city{
+	float: right;
+	color: #aaa;
+	height: 30px;
+	line-height: 30px;
+}
+
+
+
+/* 焦点图上浮层 */
+
+.recommendBox{
+	 width: 280px;
+    height: 360px;
+	position: absolute;
+    top: 181px;
+    left: 50%;
+    z-index: 100;
+    margin-left: -600px;
+}
+.recommendBox .backover {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    opacity: 0.9;
+    filter: alpha(opacity : 90);
+    z-index: 10;
+}
+.recommendBox .recommendList{
+	position: relative;
+	z-index: 20;
+	padding-top:20px;
+	display: none;
+}
+.recommendBox .recommendList a:hover,
+.recommendBox .recommendList .type .scenic_more dd a:hover,
+.recommendBox .recommendList .type .hotbourn_more li a:hover{
+	color: #ff8000;
+}
+.recommendBox .recommendList .type{
+	position: relative;
+	padding:5px 15px 3px 10px; 
+    cursor: pointer;
+}
+.recommendBox .recommendList .type .float_more{
+	width: 410px;
+	height: 350px;
+	background: #fff;
+	position: absolute;
+	left: 100%;
+	top: 0;
+	z-index: 20;
+	overflow: hidden;
+	padding: 10px 30px 0 20px;
+}
+.recommendBox .recommendList .type .scenic_more{
+	top:-196px;
+	*top:-203px;
+}
+.recommendBox .recommendList .type .hotbourn_more{
+	top:-268px;
+	*top:-278px;
+
+}
+
+.recommendBox .recommendList .type .hotbourn_more li{
+	float:left;
+	width: 40%;
+	padding: 0 5%;
+	position: relative;
+}
+.recommendBox .recommendList .type .hotbourn_more li dl{
+	float: left;
+	line-height: 40px;
+
+}
+.recommendBox .recommendList .type .hotbourn_more li dl dt,
+.recommendBox .recommendList .type .hotbourn_more li dl dd{
+	float: left;
+}
+.recommendBox .recommendList .type .hotbourn_more li dl dt{
+	position: absolute;
+	left: 10px;
+}
+
+.recommendBox .recommendList .type .hotbourn_more li a{
+	padding: 0 10px;
+	color: #666;
+}
+
+.recommendBox .recommendList .type dl{
+
+}
+.recommendBox .recommendList .type .float_data{
+	overflow:hidden;
+}
+.recommendBox .recommendList .type .float_data dt,
+.recommendBox .recommendList .type .float_data dd{
+	padding-left: 30px;
+	overflow: hidden;
+	height: 32px;
+}
+.recommendBox .recommendList .method .float_data dd{
+	height: 64px;
+}
+.recommendBox .recommendList .type .float_data dt{
+	line-height: 32px;
+	font-size: 16px;
+	color: #333;
+    width: 240px;
+	font-weight: bold;
+}
+.recommendBox .recommendList .day .float_data dt{
+	background:url(../images/index_type.png) no-repeat -2px 3px
+}
+.recommendBox .recommendList .method .float_data dt{
+	background:url(../images/index_type.png) no-repeat -2px -38px
+}
+.recommendBox .recommendList .scenic .float_data dt{
+	background:url(../images/index_type.png) no-repeat -2px -79px
+}
+.recommendBox .recommendList .hotbourn .float_data dt{
+	background:url(../images/index_type.png) no-repeat -2px -120px
+}
+.recommendBox .recommendList li .float_data dd {
+
+}
+.recommendBox .recommendList ol li {
+	float: left;
+    padding-right: 14px;
+}
+.recommendBox .recommendList ol li a{
+	line-height: 32px;
+	color: #6e6e6e;
+	white-space: nowrap;
+}
+.recommendBox .recommendList ol li a:hover{
+	color: #ff8000;
+}
+.recommendBox .recommendList .type .more{
+    position: absolute;
+    right: 15px;
+    top: 0;
+    height: 32px;
+    line-height: 32px;
+    width: 16px;
+    font-family: simsun,sans-serif;
+    color: #bbb;
+    font-size: 16px;
+    font-weight: bold;
+}
+.recommendBox .scenic:hover,
+.recommendBox .hotbourn:hover{
+	background: #fff;
+}
+
+/* 推荐更多 */
+.recommendBox .recommendList .type .scenic_more{
+	
+}
+.recommendBox .recommendList .type .scenic_more dl{
+	line-height: 30px;
+	float: left;
+	overflow: hidden;
+}
+.recommendBox .recommendList .type .scenic_more dt,
+.recommendBox .recommendList .type .scenic_more dd,
+.recommendBox .recommendList .type .scenic_more dd ol,
+.recommendBox .recommendList .type .scenic_more dd ol li
+{
+	float: left;
+}
+.recommendBox .recommendList .type .scenic_more dt{
+	width: 60px;
+}
+.recommendBox .recommendList .type .scenic_more dd{
+	width: 350px;
+}
+.recommendBox .recommendList .type .scenic_more dd a{
+	color: #666;
+	padding:0 6px;
+	white-space: nowrap;
+	line-height: 35px;
+}
+
+
+/*
+
+
+.floor .fold_wrap{
+	width:1200px;
+	height:310px;
+	overflow:hidden;
+	margin-right: 0;
+}
+.fold_wrap li{
+	float:left;
+	width:200px;
+	height:310px;
+	position:relative;
+	overflow:hidden;
+	cursor:pointer;
+	margin-right: 0;
+	margin-bottom: 120px;
+}
+.fold_wrap li:hover{
+	box-shadow: none;
+}
+.fold_wrap li .mask_b{
+	position:absolute;
+	overflow:hidden;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	background:rgba(0,0,0,.3);
+	_background:#B2B2B2;
+}
+.fold_wrap li.active .mask_b{
+	background:none;
+}
+.fold_wrap li .mask_b h4{
+	color: #fff;
+	margin: 0 auto;
+	display: block;
+	font: 20px/60px Microsoft Yahei;
+	position: relative;
+	padding: 5px 0 0 10px;
+}
+.fold_wrap li .mask_b p{
+	font:14px/24px Microsoft Yahei;
+	color: #fff;
+	padding-left: 10px;
+}
+.fold_wrap li.big{width:322px;}
+.adv_intro_show{bottom:0 !important; transition:bottom 0.3s linear 0.3s; -webkit-transition:bottom 0.3s linear 0.3s;}
+
+.pic_auto{width:100%;height:100%;background-repeat:no-repeat; }
+*/
+
+.slider_box{
+	width:1200px;
+	height:310px;
+	overflow:hidden;
+	margin-right: 0;
+	position: relative;
+}
+#slider {
+	position: absolute;
+	width: 100%;
+	height: 310px;
+	overflow: hidden;
+}
+#slider .slide {
+	position: absolute;
+	top: 0px;
+	height: 306px;
+	width: 330px;
+	background: #000;
+	overflow: hidden;
+	cursor: default;
+}
+#slider .slide:hover{
+	box-shadow: none;
+}
+#slider .title {
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+	text-decoration: none;
+}
+#slider .backgroundText {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 100%;
+	background: #000;
+	filter: alpha(opacity=60);
+	opacity: 0.6;
+}
+#slider .text {
+	position: absolute;
+	top: 0px;
+	color: #ddd;
+	font-size: 14px;
+	text-align: justify;
+	width: 470px;
+	left: 10px;
+	margin-top: 10px;
+}
+#slider .diapo {
+	position: absolute;
+	filter: alpha(opacity=100);
+	opacity: 1;
+	visibility: hidden;
+}

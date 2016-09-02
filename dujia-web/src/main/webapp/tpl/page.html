@@ -1,0 +1,27 @@
+<%if(data.pi > 0 && data.pi <=data.tp) {%>
+    <%if(data.pi == 1) {%>
+        <a href="javascript:;" class="prev front"><i></i>首页</a>
+        <a href="javascript:;" class="prev front"><i></i>上一页</a>
+    <%} else {%>
+        <a href="javascript:searchPage(1)" class="prev"><i></i>首页</a>
+        <a href="javascript:searchPage(<%=data.pi -1%>)" class="prev"><i></i>上一页</a>
+    <%}%>
+    <%for(var i=data.pi-3; i<data.pi; i++) {%>
+        <%if(i>0) {%>
+            <a href="javascript:searchPage(<%=i%>)"><%=i%></a>
+        <%}%>
+    <%}%>
+            <a class="check front"><%=data.pi%></a>
+    <%for(var j=data.pi+1; j<=data.pi+4; j++) {%>
+        <%if(j<=data.tp) {%>
+            <a href="javascript:searchPage(<%=j%>)"><%=j%></a>
+        <%}%>
+    <%}%>
+    <%if(data.pi == data.tp) {%>
+        <a href="javascript:;" class="next front"><i></i>下一页</a>
+        <a href="javascript:;" class="next front"><i></i>末页</a>
+    <%} else {%>
+        <a href="javascript:searchPage(<%=data.pi + 1%>)" class="next"><i></i>下一页</a>
+        <a href="javascript:searchPage(<%=data.tp%>)" class="next"><i></i>末页</a>
+    <%}%>
+<%}%>

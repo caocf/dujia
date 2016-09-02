@@ -1,0 +1,33 @@
+<%for( var i = 0;i < $data.length;i++ ){%>
+    <%if($data[i].ResType==1){%>
+    <ol>
+        <li>
+            <dl>
+                <dt resid="<%=$data[i].ResId%>">
+                    <%=$data[i].ResName%>
+                    <font>
+                        <%=$data[i].ResProName%> <%=$data[i].ProContainCount%>张
+                    </font>
+                </dt>
+                <dd>
+                    <p>景点地址：<%=$data[i].Address%></p>
+                    <p>开园时间：<%=$data[i].StartTime%></p>
+                </dd>
+            </dl>
+        </li>
+    </ol>
+    <%}%>
+    <%if($data[i].ResType==0){%>
+    <ol>
+        <li>
+            <dl>
+                <dt resid="<%=$data[i].ResId%>"><%=$data[i].ResName%><font><%=$data[i].ResProName%> <%=$data[i].ProContainCount%>晚</font></dt>
+                <dd>
+                     <p>酒店地址：<%=$data[i].Address%></p>
+                    <p><%==$data[i].proProps%></p>
+                </dd>
+            </dl>
+        </li>
+    </ol>
+    <%}%>
+<%}%>

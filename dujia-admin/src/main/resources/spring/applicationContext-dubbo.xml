@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- ERM消费方应用名称  -->
+    <dubbo:application name="erm_consumer"/>
+
+    <!-- ERM权限管理系统 -->
+    <dubbo:registry  id="ermZookeeper" protocol="zookeeper" address="${erm.zookeeper.address}" />
+    
+	<dubbo:reference id="ermUserService" 
+					 interface="com.gome.erm.api.ErmUserService" 
+		             registry="ermZookeeper" 
+		             loadbalance="random" 
+		             timeout="10000"/>
+		             
+	<dubbo:reference id="ermLoginService" 
+					 interface="com.gome.erm.api.ErmLoginService" 
+					 registry="ermZookeeper" 
+					 loadbalance="random" 
+					 timeout="10000"/>
+	<!-- ERM权限管理系统 -->
+
+</beans>

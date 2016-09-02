@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 加密工具类 -->
+	<bean id="cookieCipherTools" class="com.gome.common.web.cookie.CookieCipherTools">
+		<property name="charsetName" value="UTF-8" />
+	</bean>
+	
+	<!-- 客户端cookie -->
+	<bean id="ermClientEncryptCookie" class="com.gome.common.web.cookie.GomeCookie">
+		<!-- 是否加密 -->
+		<property name="encrypt" value="true" />
+		<!-- 加密密钥 -->
+		<property name="key" value="xLyhSdcQGix62o+tgfjZyx+bG+sQZCl5" />
+		<!-- 加密工具类 -->
+		<property name="cookieCipherTools" ref="cookieCipherTools" />
+		<!-- cookie名称 -->
+		<property name="name" value="_client_" />
+		<!-- cookie存放路径 -->
+		<property name="path" value="/" />
+		<!-- cookie域 -->
+		<!-- uat .atguat.com.cn -->
+		<!-- 线上 .ds.gome.com.cn -->
+		<property name="domain" value="${erm.domain}" />
+	</bean>
+	
+	<!-- 客户端cookie 继承ermClientEncryptCookie 重写name -->
+	<bean parent="ermClientEncryptCookie" id="sessionCookie">
+		<property name="name" value="_latn_" />
+	</bean>
+	
+	<!-- 参数列表 -->
+	<bean id="gomeCookie" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="ermClientEncryptCookie" />
+				<ref bean="sessionCookie" />
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- cookie工具类 -->
+	<bean id="cookieUtils" class="com.gome.common.web.cookie.CookieUtils">
+		<property name="gomeCookie" ref="gomeCookie" />
+	</bean>
+</beans>
